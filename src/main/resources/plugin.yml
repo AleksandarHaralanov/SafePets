@@ -1,0 +1,6 @@
+main: io.github.aleksandarharalanov.petx.PetX
+version: 1.0.0-beta
+name: PetX
+author: Beezle
+website: github.com/AleksandarHaralanov/PetX
+description: Prevents others from being able to harm your pet
