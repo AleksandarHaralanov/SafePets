@@ -1,10 +1,7 @@
 package io.github.aleksandarharalanov.petx;
 
-import io.github.aleksandarharalanov.petx.listener.EntityTameListener;
-import io.github.aleksandarharalanov.petx.listener.EntityDamageListener;
-import io.github.aleksandarharalanov.petx.listener.PlayerInteractEntityListener;
+import io.github.aleksandarharalanov.petx.listener.*;
 import io.github.aleksandarharalanov.petx.util.ConfigUtil;
-import io.github.aleksandarharalanov.petx.util.LoggerUtil;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -37,11 +34,15 @@ public class PetX extends JavaPlugin {
 
         PluginManager pluginManager = getServer().getPluginManager();
         final EntityDamageListener entityDamageListener = new EntityDamageListener();
+        final EntityDeathListener entityDeathListener = new EntityDeathListener();
         final EntityTameListener entityTameListener = new EntityTameListener();
         final PlayerInteractEntityListener playerInteractEntityListener = new PlayerInteractEntityListener();
+        final PlayerJoinListener playerJoinListener = new PlayerJoinListener();
         pluginManager.registerEvent(Type.ENTITY_DAMAGE, entityDamageListener, Priority.Normal, this);
+        pluginManager.registerEvent(Type.ENTITY_DEATH, entityDeathListener, Priority.Normal, this);
         pluginManager.registerEvent(Type.ENTITY_TAME, entityTameListener, Priority.Normal, this);
         pluginManager.registerEvent(Type.PLAYER_INTERACT_ENTITY, playerInteractEntityListener, Priority.Normal, this);
+        pluginManager.registerEvent(Type.PLAYER_JOIN, playerJoinListener, Priority.Normal, this);
 
         logInfo(String.format("[%s] v%s Enabled.", pdf.getName(), pdf.getVersion()));
     }

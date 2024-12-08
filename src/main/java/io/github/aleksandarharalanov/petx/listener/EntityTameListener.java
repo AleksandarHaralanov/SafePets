@@ -13,13 +13,12 @@ public class EntityTameListener extends EntityListener {
     @Override
     public void onEntityTame(EntityTameEvent event) {
         String ownerUsername = ((Player) event.getOwner()).getName();
-        List<String> petsList = getPets().getStringList(ownerUsername, new ArrayList<>());
-        if (petsList == null) petsList = new ArrayList<>();
+        List<String> ownerPets = getPets().getStringList(ownerUsername, new ArrayList<>());
 
         String petUniqueId = event.getEntity().getUniqueId().toString();
-        petsList.add(petUniqueId);
+        ownerPets.add(petUniqueId);
 
-        getPets().setProperty(ownerUsername, petsList);
+        getPets().setProperty(ownerUsername, ownerPets);
         getPets().save();
     }
 }

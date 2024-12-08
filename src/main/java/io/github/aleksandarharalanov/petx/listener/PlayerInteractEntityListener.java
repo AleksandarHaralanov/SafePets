@@ -27,8 +27,6 @@ public class PlayerInteractEntityListener extends PlayerListener {
         String ownerUsername = owner.getName();
         if (playerUsername.equals(ownerUsername)) {
             List<String> petsList = getPets().getStringList(ownerUsername, new ArrayList<>());
-            if (petsList == null) petsList = new ArrayList<>();
-
             String petUniqueId = wolf.getUniqueId().toString();
             if (!petsList.contains(petUniqueId)) {
                 petsList.add(petUniqueId);
