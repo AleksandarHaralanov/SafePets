@@ -1,4 +1,4 @@
-package io.github.aleksandarharalanov.petx.listener;
+package io.github.aleksandarharalanov.safepets.listener;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -9,10 +9,11 @@ import org.bukkit.event.entity.EntityListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static io.github.aleksandarharalanov.petx.PetX.getDeadPets;
-import static io.github.aleksandarharalanov.petx.PetX.getPets;
+import static io.github.aleksandarharalanov.safepets.SafePets.getAlivePets;
+import static io.github.aleksandarharalanov.safepets.SafePets.getDeadPets;
 
 public class EntityDeathListener extends EntityListener {
+
     @Override
     public void onEntityDeath(EntityDeathEvent event) {
         Entity entity = event.getEntity();
@@ -24,10 +25,10 @@ public class EntityDeathListener extends EntityListener {
         String petUniqueId = wolf.getUniqueId().toString();
         Player owner = (Player) wolf.getOwner();
         if (owner != null) {
-            List<String> ownerPets = getPets().getStringList(owner.getName(), new ArrayList<>());
+            List<String> ownerPets = getAlivePets().getStringList(owner.getName(), new ArrayList<>());
             if (ownerPets.remove(petUniqueId)) {
-                getPets().setProperty(owner.getName(), ownerPets);
-                getPets().save();
+                getAlivePets().setProperty(owner.getName(), ownerPets);
+                getAlivePets().save();
             }
         } else {
             List<String> deadPets = getDeadPets().getStringList("dead-pets", new ArrayList<>());

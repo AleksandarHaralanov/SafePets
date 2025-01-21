@@ -1,6 +1,11 @@
-main: io.github.aleksandarharalanov.petx.PetX
+main: io.github.aleksandarharalanov.safepets.SafePets
 version: 1.0.0
-name: PetX
+name: SafePets
 author: Beezle
-website: github.com/AleksandarHaralanov/PetX
-description: Prevents others from being able to harm your pet
+website: github.com/AleksandarHaralanov/SafePets
+description: Prevents players from harming others' pets.
+
+permissions:
+  safepets.bypass:
+    description: Allows player to bypass SafePets protection.
+    default: op

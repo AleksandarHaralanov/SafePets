@@ -1,2 +1,1 @@
-# PetX
-Work In Progress
+# SafePets

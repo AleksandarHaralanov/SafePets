@@ -1,4 +1,4 @@
-package io.github.aleksandarharalanov.petx.util;
+package io.github.aleksandarharalanov.safepets.util;
 
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,6 +21,7 @@ import static org.bukkit.Bukkit.getServer;
  * It logs messages indicating whether an update is available or if the plugin is up to date.
  */
 public class UpdateUtil {
+
     private static final Logger logger = getServer().getLogger();
 
     /**

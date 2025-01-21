@@ -1,4 +1,4 @@
-package io.github.aleksandarharalanov.petx.listener;
+package io.github.aleksandarharalanov.safepets.listener;
 
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
@@ -11,10 +11,12 @@ import org.bukkit.event.entity.EntityListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static io.github.aleksandarharalanov.petx.PetX.getPets;
-import static io.github.aleksandarharalanov.petx.util.ColorUtil.translate;
+import static io.github.aleksandarharalanov.safepets.SafePets.getAlivePets;
+import static io.github.aleksandarharalanov.safepets.util.AccessUtil.hasPermission;
+import static io.github.aleksandarharalanov.safepets.util.ColorUtil.translate;
 
 public class EntityDamageListener extends EntityListener {
+
     @Override
     public void onEntityDamage(EntityDamageEvent event) {
         Entity entity = event.getEntity();
@@ -27,8 +29,8 @@ public class EntityDamageListener extends EntityListener {
         if (attacker == null) return;
 
         String petUniqueId = wolf.getUniqueId().toString();
-        List<String> attackerPets = getPets().getStringList(attacker.getName(), new ArrayList<>());
-        if (attackerPets == null || !attackerPets.contains(petUniqueId)) {
+        List<String> attackerPets = getAlivePets().getStringList(attacker.getName(), new ArrayList<>());
+        if ((attackerPets == null || !attackerPets.contains(petUniqueId)) && !hasPermission(attacker, "safepets.bypass")) {
             event.setCancelled(true);
             attacker.sendMessage(translate("&cYou can't harm this pet; it doesn't belong to you."));
         }

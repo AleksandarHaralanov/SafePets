@@ -1,4 +1,4 @@
-package io.github.aleksandarharalanov.petx.util;
+package io.github.aleksandarharalanov.safepets.util;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.config.Configuration;
@@ -25,6 +25,7 @@ import static org.bukkit.Bukkit.getServer;
  * and easier to maintain. You can also initialize and manage a log file for additional logging purposes.
  */
 public class LoggerUtil extends Configuration {
+
     private static File logFile;
     private static String pluginName;
     private static final Logger logger = getServer().getLogger();
@@ -76,9 +77,9 @@ public class LoggerUtil extends Configuration {
         if (logDateTime) {
             LocalDateTime now = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String timeStamp = now.format(formatter);
+            String timestamp = now.format(formatter);
 
-            logEntry = String.format("[%s] %s", timeStamp, text);
+            logEntry = String.format("[%s] %s", timestamp, text);
         } else logEntry = text;
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true))) {

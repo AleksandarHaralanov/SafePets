@@ -1,4 +1,4 @@
-package io.github.aleksandarharalanov.petx.listener;
+package io.github.aleksandarharalanov.safepets.listener;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -9,9 +9,10 @@ import org.bukkit.event.player.PlayerListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static io.github.aleksandarharalanov.petx.PetX.getPets;
+import static io.github.aleksandarharalanov.safepets.SafePets.getAlivePets;
 
 public class PlayerInteractEntityListener extends PlayerListener {
+
     @Override
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
         Entity entity = event.getRightClicked();
@@ -23,15 +24,15 @@ public class PlayerInteractEntityListener extends PlayerListener {
         Player owner = (Player) wolf.getOwner();
         if (owner == null) return;
 
-        String playerUsername = event.getPlayer().getName();
-        String ownerUsername = owner.getName();
-        if (playerUsername.equals(ownerUsername)) {
-            List<String> petsList = getPets().getStringList(ownerUsername, new ArrayList<>());
+        String playerName = event.getPlayer().getName();
+        String ownerName = owner.getName();
+        if (playerName.equals(ownerName)) {
+            List<String> petsList = getAlivePets().getStringList(ownerName, new ArrayList<>());
             String petUniqueId = wolf.getUniqueId().toString();
             if (!petsList.contains(petUniqueId)) {
                 petsList.add(petUniqueId);
-                getPets().setProperty(ownerUsername, petsList);
-                getPets().save();
+                getAlivePets().setProperty(ownerName, petsList);
+                getAlivePets().save();
             }
         }
     }
