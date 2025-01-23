@@ -30,6 +30,11 @@ public class EntityDeathListener extends EntityListener {
                 getAlivePets().setProperty(owner.getName(), ownerPets);
                 getAlivePets().save();
             }
+
+            if (ownerPets.isEmpty() && getAlivePets().getProperty(owner.getName()) != null) {
+                getAlivePets().removeProperty(owner.getName());
+                getAlivePets().save();
+            }
         } else {
             List<String> deadPets = getDeadPets().getStringList("dead-pets", new ArrayList<>());
             deadPets.add(petUniqueId);
