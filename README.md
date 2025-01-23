@@ -7,6 +7,8 @@ It prevents players from harming others' pets.
 ## Contributing Code & Reporting Issues
 Consider helping SafePets become even more versatile and robust.
 
+Visit the [CONTRIBUTING](https://github.com/AleksandarHaralanov/SafePets/blob/master/.github/CONTRIBUTING.md) guide for details on how to get started and where to focus your efforts.
+
 For any issues with the plugin, or suggestions, please report them [here](https://github.com/AleksandarHaralanov/SafePets/issues).
 
 ---
