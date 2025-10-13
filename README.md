@@ -29,7 +29,9 @@ By default, only OPs have permission.
 Use PermissionsEx or similar plugins to grant groups the permission, enabling the commands.
 
 ### Permissions:
-- `safepets.bypass` - Allows player to bypass the SafePets protection.
+| Permission | Description |
+|------------|-------------|
+| `safepets.bypass` | Allows player to bypass the SafePets protection. |
 
 ---
 ## Configurations
